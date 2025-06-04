@@ -36,7 +36,7 @@ void MainScene::Initialize()
 {
 	bg_.Initialize();
 	player_.Initialize();
-	ya_.Initialize();
+	ya_.Initialize(Math::Vector2(0.0f,0.0f), 1000.0f);
 }
 
 // releasing resources required for termination.
