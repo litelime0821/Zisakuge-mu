@@ -23,7 +23,7 @@ public:
 private:
 	BG bg_;
 	Player player_;
-	ya ya_;
+	ya ya_[50];
 
 
 

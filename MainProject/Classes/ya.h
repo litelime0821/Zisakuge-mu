@@ -7,10 +7,10 @@ class Player;
 class ya {
 public:
     void Load();
-    void Initialize(HE::Math::Vector2 initial, float speed);
+    void Initialize(float speed);
     void Update();
-  // HE::Math::Rectangle GetCollision();
-   //void OnCollision();
+   HE::Math::Rectangle GetCollision();
+   void OnCollision();
    bool CollisionDetect(Player& player);
 
 private:
