@@ -91,9 +91,6 @@
     <ClInclude Include="Classes\ICollider.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\Asiba.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Classes\Player.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -136,9 +133,6 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="Classes\CollisionDetection.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\Asiba.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Player.cpp">

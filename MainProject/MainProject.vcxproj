@@ -105,7 +105,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Classes\Asiba.h" />
     <ClInclude Include="Classes\BG.h" />
     <ClInclude Include="Classes\CollisionDetection.h" />
     <ClInclude Include="Classes\ICollider.h" />
@@ -131,7 +130,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Classes\Asiba.cpp" />
     <ClCompile Include="Classes\BG.cpp" />
     <ClCompile Include="Classes\CollisionDetection.cpp" />
     <ClCompile Include="Classes\Player.cpp" />

@@ -52,62 +52,73 @@ void ya::Update()
         SetRandomPosition();
 }
 
-//bool ya::CollisionDetect(Player& player)
-//{
-//    Math::Rectangle player_collision = player.GetCollision();
-//    
-//
-//
-//    Math::Rectangle collision;
-//    collision.x = (long)sprite_.params.pos.x;
-//    collision.y = (long)sprite_.params.pos.y;
-//    collision.width = (long)sprite_.params.siz.x;
-//    collision.height = (long)sprite_.params.siz.y;
-//   collision_sprite_.params.pos.x = (float)collision.x;
-//    collision_sprite_.params.pos.y = (float)collision.y;
-//    collision_sprite_.params.siz.x = (float)collision.width;
-//    collision_sprite_.params.siz.y = (float)collision.height;
-//    player_collision = player.GetCollision();
-//    if (player_collision.Intersects(collision)) {
-//
-//        player.OnCollision();
-//      
-//        return true;
-//    }
-//   
-//    return false;
-//}
+bool ya::CollisionDetect(Player& player)
+{
+    Math::Rectangle player_collision = player.GetCollision();
+    
+
+
+    Math::Rectangle collision;
+    collision.x = (long)sprite_.params.pos.x;
+    collision.y = (long)sprite_.params.pos.y;
+    collision.width = (long)sprite_.params.siz.x;
+    collision.height = (long)sprite_.params.siz.y;
+   collision_sprite_.params.pos.x = (float)collision.x;
+    collision_sprite_.params.pos.y = (float)collision.y;
+    collision_sprite_.params.siz.x = (float)collision.width;
+    collision_sprite_.params.siz.y = (float)collision.height;
+    player_collision = player.GetCollision();
+    if (player_collision.Intersects(collision)) {
+
+        player.OnCollision();
+      
+        return true;
+    }
+   
+    return false;
+}
 
 void ya::SetRandomPosition()
 {
-    const int SIDE = Random::GetRandom(0, 0);
+    const int SIDE = Random::GetRandom(0, 3);
     Math::Vector2 target;
     switch (SIDE) {
     case 0: // ‰E
         sprite_.params.pos.x = RenderingPath->GetLogicalWidth();
-        sprite_.params.pos.y = Random::GetRandom(-360.0f, 1080.0f);
-      //  if(sprite_.params.pos.y == )
+        sprite_.params.pos.y = Random::GetRandom(0.0f, 720.0f);
+      
 
         target.x = -(float)sprite_.params.siz.x;
         target.y = Random::GetRandom(-360.0f, 1080.0f);
         break; 
     case 1://¶
         sprite_.params.pos.x = 0;
-        sprite_.params.pos.y = Random::GetRandom(-360.0f, 1080.0f);
+        sprite_.params.pos.y = Random::GetRandom(0.0f, 720.0f);
 
-        target.x = -(float)sprite_.params.siz.x;
+        target.x = RenderingPath->GetLogicalWidth();
         target.y = Random::GetRandom(-360.0f, 1080.0f);
 
         break;
     case 2://ã
+        sprite_.params.pos.x = Random::GetRandom(-360.0f, 1080.0f);
+        sprite_.params.pos.y = 0;
+    
 
+        target.y = RenderingPath->GetLogicalWidth();
+        target.x = Random::GetRandom(-360.0f, 1640.0f);
         break;
     case 3://‰º
+        sprite_.params.pos.y = RenderingPath->GetLogicalHeight();
+        sprite_.params.pos.x = Random::GetRandom(-360.0f, 1640.0f);
+        
 
+        target.y = 0;
+        target.x = Random::GetRandom(-360.0f, 1080.0f);
         break;
     }
     direction_ = target - sprite_.params.pos;
     direction_.Normalize();
+    sprite_.params.rotation = atan2(direction_.y ,direction_.x);
 }
 
 //void ya::OnCollision() {
