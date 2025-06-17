@@ -17,6 +17,7 @@ void BG::Initialize()
 
     sprite_.params.siz = sprite_.GetTextureSize();
     sprite_.params.pos = Math::Vector2(0.0f, 0.0f);
+
 }
 
 void BG::Update()

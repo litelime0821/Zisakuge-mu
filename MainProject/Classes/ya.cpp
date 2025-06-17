@@ -102,10 +102,10 @@ void ya::OnCollision() {
 Math::Rectangle ya::GetCollision()
 {
     Math::Rectangle collision;
-    collision.x = (long)sprite_.params.pos.x-8;
-    collision.y = (long)sprite_.params.pos.y-8;
-    collision.width = 16;
-    collision.height = 16;
+    collision.x = (long)sprite_.params.pos.x-4;
+    collision.y = (long)sprite_.params.pos.y-4;
+    collision.width = 8;
+    collision.height = 8;
 
     collision_sprite_.params.pos.x = (float)collision.x;
     collision_sprite_.params.pos.y = (float)collision.y;

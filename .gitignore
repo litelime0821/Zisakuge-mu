@@ -383,3 +383,6 @@ MainProject/stdafx.*
 MainProject/targetver.h
 packages/
 HuEngine.sln
+Assets/video.mp3
+Assets/video.mp4
+Assets/video.wav

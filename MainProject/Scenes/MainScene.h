@@ -4,6 +4,7 @@
 #include "../Classes/BG.h"
 #include "../Classes/Player.h"
 #include "../Classes/ya.h"
+#include "../Classes/PlayerDate.h"
 
 
 class MainScene : public HE::Scene
@@ -24,7 +25,9 @@ private:
 	BG bg_;
 	Player player_;
 	ya ya_[50];
-
-
+	PlayerData PD_;
+	int drop_;
+	float elapsed_time_;
+	float time = 0.0f;
 
 };

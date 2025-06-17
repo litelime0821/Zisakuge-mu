@@ -9,16 +9,26 @@ using namespace HE;
 
 void Player::Load()
 {
-    sprite_ = Sprite("girl2.png");
+    sprite_ = Sprite("player1.png");
     RenderingPath->AddSprite(&sprite_, 0);
     RenderingPath->AddSprite(&collision_sprite_, 1);
+
+
+
+
+    heart3_ = Sprite("heart3.png");
+    RenderingPath->AddSprite(&heart3_, -50);
+    heart2_ = Sprite("heart2.png");
+    RenderingPath->AddSprite(&heart2_, -50);
+    heart1_ = Sprite("heart1.png");
+    RenderingPath->AddSprite(&heart1_, -50);
 }
 
 
 void Player::Initialize()
 {
 
-    sprite_.params.siz = Math::Vector2(64.0f, 64.0f);
+    sprite_.params.siz = Math::Vector2(32.0f, 48.0f);
     sprite_.params.pos = Math::Vector2(
         (RenderingPath->GetLogicalWidth() - sprite_.params.siz.x) / 2.0f,
         RenderingPath->GetLogicalHeight() - sprite_.params.siz.y
@@ -28,16 +38,18 @@ void Player::Initialize()
         256, 128, sprite_.params.siz.x, sprite_.params.siz.y
     ));
 
+    heart3_.params.siz = Math::Vector2(25.0f, 15.0f);
+   
 
 
     // 画面に表示する座標、サイズの設定
-    sprite_.params.pos.x = 640.0f - 64.0f;
-    sprite_.params.pos.y = 320.0f - 64.0f;
-    sprite_.params.siz.x = 64.0f;
-    sprite_.params.siz.y = 64.0f;
+    sprite_.params.pos.x = 640.0f - 32.0f;
+    sprite_.params.pos.y = 320.0f - 48.0f;
+    sprite_.params.siz.x = 32.0f;
+    sprite_.params.siz.y = 48.0f;
 
     // 最初のコマと、一コマの大きさを設定
-    sprite_.params.enableDrawRect(Math::Vector4(256, 0, 64, 64));
+    sprite_.params.enableDrawRect(Math::Vector4(0, 0, 32, 48));
     SetInitialPosition();
 
     collision_sprite_.params.color = Color(255, 0, 0);  // 色
@@ -47,8 +59,8 @@ void Player::Initialize()
     sprite_.anim = Sprite::Anim();
     sprite_.anim.repeatable = true;                       // ループするかしないか
     sprite_.anim.drawRectAnim.frameRate = 2;             // アニメーションの速度
-    sprite_.anim.drawRectAnim.frameCount = 4;             // 画像にアニメーションが何コマあるか
-    sprite_.anim.drawRectAnim.horizontalFrameCount = 10;
+    sprite_.anim.drawRectAnim.frameCount = 3;             // 画像にアニメーションが何コマあるか
+    sprite_.anim.drawRectAnim.horizontalFrameCount = 3;
 
 
   
@@ -56,7 +68,7 @@ void Player::Initialize()
 }
 
         void Player::Update()
-        {
+        { 
             if (sprite_.params.pos.x >= 2560.0f)
                 sprite_.params.pos.x = -1280.0f;
             else if (sprite_.params.pos.x <= -1280.0f)
@@ -84,46 +96,47 @@ void Player::Initialize()
 
             // 画面の外に出ないようにする
             
-            sprite_.params.pos.y = std::clamp(sprite_.params.pos.y, 0.0f, 720.0f - 64.0f);
+            sprite_.params.pos.y = std::clamp(sprite_.params.pos.y, 0.0f, 720.0f - 48.0f);
 
             if (InputSystem.Keyboard.isPressed.Up) {
-                sprite_.params.drawRect.y = 128;
+                sprite_.params.drawRect.y = 48*3;
           
-                if (sprite_.params.drawRect.x < 256.0f) {
-                    sprite_.params.drawRect.x += 256.0f;
-                    sprite_.anim.drawRectAnim.frameRate = 4;
+                if (sprite_.params.drawRect.x < 96.0f) {
+                    sprite_.params.drawRect.x += 96.0f;
+                
                 }
             }
             else if (InputSystem.Keyboard.isPressed.Down){
                 sprite_.params.drawRect.y = 0;
               
-                if( sprite_.params.drawRect.x >= 256.0f) {
-                    sprite_.params.drawRect.x -= 256.0f;
-                    sprite_.anim.drawRectAnim.frameRate = 2;
+                if( sprite_.params.drawRect.x >= 96.0f) {
+                    sprite_.params.drawRect.x -= 96.0f;
+                    //sprite_.anim.drawRectAnim.frameRate = 2;
                 }
             }
             else if (InputSystem.Keyboard.isPressed.Left) {
-                sprite_.params.drawRect.y = 64;  
+                sprite_.params.drawRect.y = 48;  
               
-               if ( sprite_.params.drawRect.x >= 256.0f) {
-                    sprite_.params.drawRect.x -= 256.0f;
-                    sprite_.anim.drawRectAnim.frameRate = 2;
+               if ( sprite_.params.drawRect.x >= 96.0f) {
+                    sprite_.params.drawRect.x -= 96.0f;
+                   // sprite_.anim.drawRectAnim.frameRate = 2;
                 }
             }
             else if (InputSystem.Keyboard.isPressed.Right) {
               
-                sprite_.params.drawRect.y = 192;
-               if ( sprite_.params.drawRect.x >= 256.0f) {
-                    sprite_.params.drawRect.x -= 256.0f;
-                    sprite_.anim.drawRectAnim.frameRate = 2;
+                sprite_.params.drawRect.y = 48*2;
+               if ( sprite_.params.drawRect.x >= 96.0f) {
+                    sprite_.params.drawRect.x -= 96.0f;
+                    //sprite_.anim.drawRectAnim.frameRate = 2;
                 }
             }
             else {
-                if (sprite_.params.drawRect.x >= 256.0f) {
-                    sprite_.params.drawRect.x -= 256.0f;
-                    sprite_.anim.drawRectAnim.frameRate = 2;
+                if (sprite_.params.drawRect.x >= 96.0f) {
+                    sprite_.params.drawRect.x -= 96.0f;
+                   // sprite_.anim.drawRectAnim.frameRate = 2;
                 }
             }
+            heart3_.params.pos = sprite_.params.pos + Math::Vector2(3.0f, -15.0f);
         }
 
 
@@ -158,6 +171,7 @@ void Player::OnCollision()
         (RenderingPath->GetLogicalWidth() - sprite_.params.siz.x) / 2.0f,
         RenderingPath->GetLogicalHeight() - sprite_.params.siz.y
     );
+    SetHeart(heart_ - 1);
 }
 
 void Player::SetInitialPosition()
@@ -166,4 +180,26 @@ void Player::SetInitialPosition()
         (RenderingPath->GetLogicalWidth() - sprite_.params.siz.x) / 2.0f,
         RenderingPath->GetLogicalHeight() - sprite_.params.siz.y
     );
+}
+void Player::SetHeart(int heart)
+{
+    heart_ = heart;
+    switch (heart) {
+    case 1:
+        heart3_.SetHidden(true);
+        heart2_.SetHidden(true);
+        heart1_.SetHidden(false);
+        break;
+    case 2:
+        heart3_.SetHidden(true);
+        heart2_.SetHidden(false);
+        heart1_.SetHidden(true);
+        break;
+    case 3:
+        heart3_.SetHidden(false);
+        heart2_.SetHidden(true);
+        heart1_.SetHidden(true);
+        break;
+
+    }
 }

@@ -97,6 +97,9 @@
     <ClInclude Include="Classes\ya.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Classes\PlayerDate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -139,6 +142,9 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="Classes\ya.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\PlayerDate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>

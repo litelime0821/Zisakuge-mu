@@ -11,7 +11,6 @@ public:
     void Update();
    HE::Math::Rectangle GetCollision();
    void OnCollision();
-   bool CollisionDetect(Player& player);
 
 private:
     void SetRandomPosition();
