@@ -9,33 +9,33 @@
 // Include Files.
 
 namespace wi {
-class DontDestroyOnLoad final
-{
-private:
-	DontDestroyOnLoad() = default;
-
-public:
-	~DontDestroyOnLoad() = default;
-
-	DontDestroyOnLoad(DontDestroyOnLoad&&) = default;
-	DontDestroyOnLoad& operator= (DontDestroyOnLoad&&) = default;
-
-	DontDestroyOnLoad(DontDestroyOnLoad const&) = delete;
-	DontDestroyOnLoad& operator= (DontDestroyOnLoad const&) = delete;
-
-	static DontDestroyOnLoad& GetInstance()
+	class DontDestroyOnLoad final
 	{
-		static DontDestroyOnLoad instance;
-		return instance;
-	}
+	private:
+		DontDestroyOnLoad() = default;
 
-private:
+	public:
+		~DontDestroyOnLoad() = default;
+
+		DontDestroyOnLoad(DontDestroyOnLoad&&) = default;
+		DontDestroyOnLoad& operator= (DontDestroyOnLoad&&) = default;
+
+		DontDestroyOnLoad(DontDestroyOnLoad const&) = delete;
+		DontDestroyOnLoad& operator= (DontDestroyOnLoad const&) = delete;
+
+		static DontDestroyOnLoad& GetInstance()
+		{
+			static DontDestroyOnLoad instance;
+			return instance;
+		}
+
+	private:
 
 
 
-public:
+	public:
+		int score_;
 
 
-
-};
+	};
 }

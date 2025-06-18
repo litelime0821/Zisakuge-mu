@@ -39,8 +39,8 @@ void Player::Initialize()
     ));
 
     heart3_.params.siz = Math::Vector2(25.0f, 15.0f);
-   
-
+    heart2_.params.siz = Math::Vector2(25.0f, 15.0f);
+    heart1_.params.siz = Math::Vector2(25.0f, 15.0f);
 
     // 画面に表示する座標、サイズの設定
     sprite_.params.pos.x = 640.0f - 32.0f;
@@ -62,7 +62,7 @@ void Player::Initialize()
     sprite_.anim.drawRectAnim.frameCount = 3;             // 画像にアニメーションが何コマあるか
     sprite_.anim.drawRectAnim.horizontalFrameCount = 3;
 
-
+    inv_ = 0;
   
     RenderingPath->AddSprite(&sprite_);
 }
@@ -137,6 +137,17 @@ void Player::Initialize()
                 }
             }
             heart3_.params.pos = sprite_.params.pos + Math::Vector2(3.0f, -15.0f);
+            heart2_.params.pos = sprite_.params.pos + Math::Vector2(3.0f, -15.0f);
+            heart1_.params.pos = sprite_.params.pos + Math::Vector2(3.0f, -15.0f);
+
+            if (inv_ == 1) {
+                inv_Time_ += Time.deltaTime;
+                if (inv_Time_ >= 5.0f) {
+                    inv_ = 0;
+                    sprite_.params.opacity = 1.0f;
+                    inv_Time_ = 0;
+                }
+            }
         }
 
 
@@ -162,16 +173,15 @@ Math::Rectangle Player::GetCollision()
 
 }
 
-
 void Player::OnCollision()
 {
-    SetInitialPosition();
-    sprite_.params.pos = Math::Vector2(
+    if (inv_ == 0) {
+        SetHeart(heart_ - 1);
+        inv_ = 1;
+        sprite_.params.opacity = 0.5;
+    }
+    
 
-        (RenderingPath->GetLogicalWidth() - sprite_.params.siz.x) / 2.0f,
-        RenderingPath->GetLogicalHeight() - sprite_.params.siz.y
-    );
-    SetHeart(heart_ - 1);
 }
 
 void Player::SetInitialPosition()

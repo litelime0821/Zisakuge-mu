@@ -2,6 +2,9 @@
 
 #include "SceneManagement.h"
 #include "Scenes/MainScene.h"
+#include "Scenes/Titlescenes.h"
+#include "Scenes/GAMEOVER.h"
+#include "Scenes/asobikata.h"
 
 void SceneManagement::Initialize()
 {
@@ -26,6 +29,9 @@ std::unique_ptr<HE::Scene> SceneManagement::CreateScene(const NextScene nextScen
 	std::unique_ptr<HE::Scene> scene;
 	switch (nextScene) {
 	case NextScene::MainScene:	scene = std::make_unique<MainScene>();	break;
+	case NextScene::TitleScene:	scene = std::make_unique<Titlescenes>();	break;
+	case NextScene::GAMEOVERScene:	scene = std::make_unique<GAMEOVER>();	break;
+	case NextScene::asobikataScene:	scene = std::make_unique<Asobi>();	break;
 	}
 	return scene;
 }

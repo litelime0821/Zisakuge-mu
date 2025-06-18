@@ -17,7 +17,7 @@ enum class Screen : int {
     Width = 1280,
     Height = 720
 };
-static const WCHAR* TITLE = L"HuGame";
+static const WCHAR* TITLE = L"–î”ð‚¯";
 
 #ifdef __clang__
 #pragma clang diagnostic ignored "-Wcovered-switch-default"

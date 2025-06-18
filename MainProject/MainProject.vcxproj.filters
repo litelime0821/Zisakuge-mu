@@ -100,6 +100,15 @@
     <ClInclude Include="Classes\PlayerDate.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\GAMEOVER.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\Titlescenes.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\asobikata.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -146,6 +155,15 @@
     </ClCompile>
     <ClCompile Include="Classes\PlayerDate.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\GAMEOVER.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\Titlescenes.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\asobikata.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

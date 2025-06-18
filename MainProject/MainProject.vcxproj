@@ -125,8 +125,11 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Resources\resource.h" />
     <ClInclude Include="SceneManagement.h" />
+    <ClInclude Include="Scenes\asobikata.h" />
     <ClInclude Include="Scenes\DontDestroyOnLoad.h" />
+    <ClInclude Include="Scenes\GAMEOVER.h" />
     <ClInclude Include="Scenes\MainScene.h" />
+    <ClInclude Include="Scenes\Titlescenes.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -150,7 +153,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Scenes\asobikata.cpp" />
+    <ClCompile Include="Scenes\GAMEOVER.cpp" />
     <ClCompile Include="Scenes\MainScene.cpp" />
+    <ClCompile Include="Scenes\Titlescenes.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

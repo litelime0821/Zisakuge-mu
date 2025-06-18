@@ -3,6 +3,7 @@
 //
 
 #include "MainScene.h"
+#include "DontDestroyOnLoad.h"
 
 using namespace HE;
 
@@ -31,7 +32,7 @@ void MainScene::Load()
 	for (int i = 0; i < std::size(ya_);i++){
 		ya_[i].Load();
 }
-	PD_.Load();
+	
 	Scene::Load();
 }
 
@@ -44,7 +45,7 @@ void MainScene::Initialize()
 	for (int i = 0; i < std::size(ya_);i++) {
 		ya_[i].Initialize(Random::GetRandom(100.0f, 1000.0f));
 	}
-	PD_.Initialize();
+	
 	drop_ = 3;
 }
 
@@ -57,6 +58,8 @@ void MainScene::Terminate()
 // updates the scene.
 void MainScene::Update(float deltaTime)
 {
+	time += deltaTime; 
+
 	bg_.Update();
 	player_.Update();
 	for (int i = 0; i < drop_;i++) {
@@ -71,6 +74,9 @@ void MainScene::Update(float deltaTime)
 		if (player_collision.Intersects(ya_collsion)) {
 			player_.OnCollision();
 			ya_[i].OnCollision();
+			if(player_.GetHeart()<1)
+
+
 			break;
 		}
 	}
@@ -81,6 +87,10 @@ void MainScene::Update(float deltaTime)
 			++drop_;
 			elapsed_time_ = 0;
 		}
+	}
+	if (player_.GetHeart() == 0) {
+		DontDestroy.score_ = time * 10;
+		SceneManager.SetNextScene(NextScene::GAMEOVERScene);
 	}
 
 	Scene::Update(deltaTime);

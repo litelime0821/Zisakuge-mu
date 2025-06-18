@@ -36,7 +36,7 @@ void ya::Initialize( float speed)
     speed_ = speed;
 
     collision_sprite_.params.color = Color(255, 0, 0);  // êF
-    collision_sprite_.params.opacity = 0.5f;
+    collision_sprite_.params.opacity = 0.0f;
 }
 
 void ya::Update()

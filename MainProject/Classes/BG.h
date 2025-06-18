@@ -11,4 +11,5 @@ public:
 
 private:
     HE::Sprite sprite_;
+    HE::Sound mc_;
 };

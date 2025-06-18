@@ -21,24 +21,18 @@ void PlayerData::Load()
 
 void PlayerData::Initialize()
 {
-
-
-
-
+  
     score_ = 0;
-
-    // スコア見出し(1-UP)
-    score_headline_.SetText(L"1-UP");
-    score_headline_.params.posX = 256.0f;
+  score_headline_.SetText(L"SCORE");
+    score_headline_.params.posX = 850.0f;
     score_headline_.params.posY = 0.0f;
-    score_headline_.params.size = 32;
-    score_headline_.params.color = Color(255, 255, 255);    // 赤, 緑, 青(0-255)
+    score_headline_.params.size = 64;
+    score_headline_.params.color = Color(255, 255, 255);
 
-    // スコア数値
     score_text_.SetText(std::to_string(score_));
-    score_text_.params.posX = 304.0f;
-    score_text_.params.posY = 32.0f;
-    score_text_.params.size = 32;
+    score_text_.params.posX = 920.0f;
+    score_text_.params.posY = 64.0f;
+    score_text_.params.size = 64;
     score_text_.params.color = Color(255, 0, 0);
 
    

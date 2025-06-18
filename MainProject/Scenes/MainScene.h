@@ -25,7 +25,8 @@ private:
 	BG bg_;
 	Player player_;
 	ya ya_[50];
-	PlayerData PD_;
+	int score_;
+
 	int drop_;
 	float elapsed_time_;
 	float time = 0.0f;

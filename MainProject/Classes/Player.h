@@ -22,5 +22,6 @@ private:
     HE::Sprite heart3_;
     HE::Sprite heart2_;
     HE::Sprite heart1_;
-	
+	int inv_;
+	float inv_Time_ = 0.0f;
 };
